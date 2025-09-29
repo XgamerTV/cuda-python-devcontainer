@@ -43,6 +43,9 @@ USER $USERNAME
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
+# Install uv python package manager
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
 ENV PATH="/home/$USERNAME/.local/bin:$PATH"
 
 # ZSH stuff (Oh my zsh, plugins, powerlevel10k)

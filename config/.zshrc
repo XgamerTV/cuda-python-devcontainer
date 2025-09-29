@@ -144,5 +144,8 @@ if [ -f "/workspace/.secrets/api.keys" ]; then
   set +o allexport
 fi
 
+# Add ~/.local/bin to PATH and to sudo secure_path (For UV)
+export PATH=$HOME/.local/bin:$PATH; if sudo grep -q '^Defaults secure_path' /etc/sudoers; then sudo sed -i 's|^Defaults secure_path=.*|Defaults secure_path="/home/vscode/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"|' /etc/sudoers; else echo 'Defaults secure_path="/home/vscode/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"' | sudo tee -a /etc/sudoers; fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
