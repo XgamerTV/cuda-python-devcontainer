@@ -34,6 +34,7 @@
 	// mount data folder
 	"mounts": [
 		"source=/datahome/rschwinger/BirdJEPA,target=/workspace/BirdJEPA,type=bind,consistency=cached",
+		"source=/datahome/rschwinger/uvcache,target=/workspace/.uv_cache,type=bind,consistency=cached",
 		//"source=/data-project/BirdSet/,target=/workspace/data_birdset,type=bind,consistency=cached",
 		//"source=/home/rschwinger/DeepBirdDetect/Models,target=/workspace/models,type=bind,consistency=cached"
 	],

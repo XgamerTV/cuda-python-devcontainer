@@ -144,8 +144,11 @@ if [ -f "/workspace/.secrets/api.keys" ]; then
   set +o allexport
 fi
 
+# UV Stuff
 # Add ~/.local/bin to PATH and to sudo secure_path (For UV)
 export PATH=$HOME/.local/bin:$PATH; if sudo grep -q '^Defaults secure_path' /etc/sudoers; then sudo sed -i 's|^Defaults secure_path=.*|Defaults secure_path="/home/vscode/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"|' /etc/sudoers; else echo 'Defaults secure_path="/home/vscode/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"' | sudo tee -a /etc/sudoers; fi
+umask 000 # file creation so that all users's files are a+rw or a+rwx
+export UV_LINK_MODE=copy # hardlinking doesn't work with different owners
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
