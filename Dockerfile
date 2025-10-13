@@ -35,7 +35,9 @@ bash-completion \
 ssh \
 python3-dev \
 pkg-config \
-libcairo2-dev
+libcairo2-dev \
+nvtop && \
+rm -rf /var/lib/apt/lists/*
 
 COPY config/.tmux.conf /home/$USERNAME/.tmux.conf
 
